@@ -23,6 +23,7 @@ const SearchResultsPage = () => {
 
 			<div className="search-list">
 				{!posts && <p>No results</p>}
+				{posts?.map(post => <Post key={post._id} {...post} variant="sm"/>)}
 			</div>
 
 

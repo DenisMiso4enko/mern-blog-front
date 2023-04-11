@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import FormWrapper from "../FormWrapper/FormWrapper";
 import Input from "../../Input/Input";
 import {httpRequest} from "../../utils/fetch";
@@ -6,9 +6,11 @@ import {BASE_URL} from "../../constance";
 import axios from "axios";
 import {useSelector} from "react-redux";
 import {RootState} from "../../store";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 
 const FormCreate = () => {
+	const { _id: id } = useParams()
+
 	const {name, email, loading, userId} = useSelector((state: RootState) => state.user)
 	const navigate = useNavigate()
 
@@ -17,6 +19,8 @@ const FormCreate = () => {
 	const [image, setImage] = useState(null)
 	const [description, setDescription] = useState('')
 	const [text, setText] = useState('')
+
+
 
 	const onChangeInputFile = async (e: any) => {
 		try {
@@ -30,7 +34,6 @@ const FormCreate = () => {
 			alert("Ошибка при загрузке файла");
 		}
 	};
-
 	const handelCreatePost = async (event: any) => {
 		event.preventDefault()
 		try {
@@ -53,11 +56,64 @@ const FormCreate = () => {
 			console.log(e)
 		}
 	}
+	const handelDeletePost = async (event: any) => {
+		event.preventDefault()
+		try {
+			const response = await httpRequest(`${BASE_URL}/posts/delete/${id}`, "DELETE")
+			const data = await response.json()
+			if (response.ok) {
+				navigate(`/`)
+			}
+		} catch (e) {
+			console.log(e)
+		}
+	}
+	const handelUpdatePost = async (event: any) => {
+		event.preventDefault()
+		try {
+			const postData = {
+				title,
+				image,
+				description,
+				text,
+				userId,
+				userName: name
+			}
+
+			const response = await httpRequest(`${BASE_URL}/posts/update/${id}`, "PATCH", postData)
+			const data = await response.json()
+			if (response.ok) {
+				navigate(`/post/${id}`)
+			}
+
+		} catch (e) {
+			console.log(e)
+		}
+	}
+	const getPostInfo = async () => {
+		try {
+			const response = await httpRequest(`${BASE_URL}/posts/getOne/${id}`, "GET")
+			const {text, title, description, image} = await response.json()
+			setText(text)
+			setImage(image)
+			setTitle(title)
+			setDescription(description)
+		} catch (err) {
+			console.log(err)
+		}
+	}
+
+
+	useEffect(() => {
+			if (id) {
+				getPostInfo()
+			}
+	}, [])
 
 
 	return (
 		<FormWrapper variant="create">
-			<form onSubmit={handelCreatePost} className="form-create">
+			<form onSubmit={id ? handelUpdatePost : handelCreatePost} className="form-create">
 				<Input onChange={(event) => setTitle(event.target.value)} value={title} placeholder="Enter title" title="Title"/>
 				{/*@ts-ignore*/}
 				<Input onChange={onChangeInputFile} value={imageName} placeholder="Upload image" type="file" title="Image"/>
@@ -67,11 +123,11 @@ const FormCreate = () => {
 
 				<div className="form-create__actions">
 					<div className="form-create__left">
-						<button className="btn btn-secondary-2" type="button" disabled={true}>Delete</button>
+						{id && <button className="btn btn-secondary-2" type="button" onClick={handelDeletePost}>Delete</button>}
 					</div>
 					<div className="form-create__right">
 						<button className="btn" type="button" onClick={() => history.go(-1)}>Cancel</button>
-						<button className="btn btn-primary" type="submit">Add post</button>
+						<button className="btn btn-primary" type="submit">{id ? "Edit post" : "Add post"}</button>
 					</div>
 				</div>
 			</form>

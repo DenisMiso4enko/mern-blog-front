@@ -43,6 +43,7 @@ function App() {
 							<Route path='/create' element={<AddPostPage/>}/>
 							<Route path='/post/:id' element={<FullPostPage/>}/>
 							<Route path='/post/search/:query' element={<SearchResultsPage/>}/>
+							<Route path="/posts/:_id/edit" element={<AddPostPage />} />
 						</Route>
 					</Routes>
 				</>

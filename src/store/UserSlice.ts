@@ -97,11 +97,11 @@ export const fetchGetMe = createAsyncThunk(
 					localStorage.setItem("jwtRefresh", refreshToken);
 					dispatch(setUser(user));
 				} else {
-					alert("Попробуйте авторизоваться снова!!!");
+					// alert("Попробуйте авторизоваться снова!!!");
 				}
 			}
 		} else {
-			alert("Попробуйте авторизоваться снова!");
+			// alert("Попробуйте авторизоваться снова!");
 		}
 	}
 );

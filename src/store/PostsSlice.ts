@@ -43,7 +43,6 @@ export const fetchSearchPosts = createAsyncThunk(
 			// const {page, limit, searchValue} = getState().posts
 			const response = await httpRequest(`${BASE_URL}/posts/search?searchQuery=${query}`, "GET")
 			const data = await response.json()
-			console.log(data)
 			dispatch(setPosts(data))
 			// dispatch(setPosts(results))
 			// dispatch(setTotalPages(totalPages))
