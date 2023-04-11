@@ -1,0 +1,67 @@
+@import "./abstracts/_variables.scss";
+
+@import "./base/_fonts.scss";
+
+@import "./layout/_wrapper.scss";
+@import "./layout/_forms.scss";
+@import "./layout/_post-list.scss";
+@import "./layout/_header.scss";
+@import "./layout/_tabs.scss";
+@import "./layout/_pagination.scss";
+@import "./layout/_crumbs.scss";
+
+
+
+
+@import "./components/_post.scss";
+@import "./components/_header.scss";
+@import "./components/_input.scss";
+@import "./components/_button.scss";
+@import "./components/_pagination.scss";
+@import "./components/_crumbs.scss";
+
+
+@import "./components/_page-title.scss";
+@import "./components/_footer.scss";
+
+
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+ul {
+  list-style: none;
+}
+
+
+body {
+  background-color: $extra-light;
+  font-family: "Open Sans", sans-serif;
+  font-size: $font-body2;
+  color: $secondary;
+}
+
+.icon {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  &:hover {
+
+  }
+}
+
+button svg {
+  font-size: 24px;
+}

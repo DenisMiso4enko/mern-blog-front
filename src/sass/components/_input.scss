@@ -1,0 +1,75 @@
+@import "../abstracts/_variables.scss";
+
+$component: "input";
+
+$input-padding-y: ($spacer * 1.125);
+$input-padding-x: ($spacer * 1.25);
+
+$input-border-radius: ($spacer * 0.125);
+
+$input-variants: (
+		"default": (
+				"border": none,
+				"color": $secondary,
+				"background-color": $white,
+		),
+		"error": (
+				"border": 1px solid $error,
+				"color": $error,
+				"background-color": $white,
+		),
+		"disabled": (
+				"border": 1px solid $light,
+				"color": $secondary,
+				"background-color": $light,
+		),
+);
+
+.#{$component} {
+	outline: 0;
+	padding: $input-padding-y $input-padding-x;
+	border-radius: $input-border-radius;
+
+	width: 100%;
+
+	font-size: $font-body2;
+
+	transition: color .3s ease, background-color .3s ease, box-shadow .3s ease;
+	&::placeholder {
+		color: $gray;
+	}
+
+	&:focus {
+		box-shadow: inset 0 0 0 1px $gray, 0 0 0 1px $gray;
+		outline: none;
+	}
+
+	&:hover {
+		//border: 1px solid $gray;
+		box-shadow: inset 0 0 0 1px $gray, 0 0 0 1px $gray;
+	}
+
+	@each $name, $styles in $input-variants {
+		&-#{$name} {
+			border: map-get($styles, "border");
+			color: map-get($styles, "color");
+			background-color: map-get($styles, "background-color");
+		}
+	}
+
+}
+
+.search-input {
+	padding: 30px 32px;
+	width: 100%;
+	height: 100%;
+	border: none;
+	outline: none;
+	background-color: $primary-2;
+	color: $white;
+	font-size: $font-body;
+	&::placeholder {
+		color: white;
+	}
+
+}

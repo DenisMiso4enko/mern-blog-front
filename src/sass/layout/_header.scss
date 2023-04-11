@@ -1,0 +1,83 @@
+.header {
+	position: relative;
+	background-color: $primary;
+	button {
+		background: transparent;
+		border: none;
+		color: $white;
+		font-size: 1.5rem;
+		padding: 30px;
+		cursor: pointer;
+	}
+	&__actions {
+		display: flex;
+		align-items: center;
+
+	}
+}
+
+.header-container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-right: $space-32;
+}
+
+
+.user-profile {
+	display: flex;
+	align-items: center;
+	gap: $spacer;
+	color: $white;
+}
+
+.user-avatar {
+	padding: 10px 10px;
+	background-color: $primary-2;
+	border-radius: 2px;
+
+}
+.user-name {
+
+}
+
+.menu-container {
+
+}
+.menu {
+	position: absolute;
+	top: 89px;
+	left: 0;
+	background-color: $white;
+	width: 236px;
+	height: 700px;
+	display: flex;
+	flex-flow: column;
+	justify-content: space-between;
+	z-index: 10;
+
+	&__user {
+		display: flex;
+		justify-content: center;
+		background-color: $primary;
+		padding: 17px 0;
+	}
+	&__links {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		a {
+			width: 100%;
+			display: block;
+			text-align: center;
+			padding: 28px 0;
+			border-bottom: 1px solid $gray;
+		}
+	}
+	&__bottom {
+		button {
+			width: 100%;
+		}
+	}
+
+}

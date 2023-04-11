@@ -1,0 +1,107 @@
+@import "../abstracts/_variables.scss";
+
+$component: "btn";
+
+
+$btn-padding-y: ($spacer * 1);
+$btn-padding-x: ($spacer * 2);
+
+$btn-border-radius: ($spacer * 0.125);
+
+
+$btn-variants: (
+		"primary": (
+				"border": none,
+				"border-hover": none,
+				"color": $white,
+				"background-color": $primary,
+				"color-hover": $white,
+				"background-color-hover": $primary-2,
+		),
+		"secondary": (
+				"border": none,
+				"border-hover": none,
+				"color": $secondary,
+				"background-color": $light,
+				"color-hover": $secondary,
+				"background-color-hover": $gray,
+		),
+		"secondary-2": (
+				"border": none,
+				"border-hover": 1px solid $medium,
+				"color": $error,
+				"background-color": $white,
+				"color-hover": $error,
+				"background-color-hover": $white,
+		),
+		"icon": (
+				"border": none,
+				"border-hover": none,
+				"color": $secondary,
+				"background-color": $light,
+				"color-hover": $white,
+				"background-color-hover": $primary-2,
+		),
+		"like": (
+				"border": none,
+				"border-hover": none,
+				"color": $secondary,
+				"background-color": $light,
+				"color-hover": $white,
+				"background-color-hover": $primary-2,
+
+		),
+		"dislike": (
+				"border": none,
+				"border-hover": none,
+				"color": $secondary,
+				"background-color": $light,
+				"color-hover": $white,
+				"background-color-hover": $error,
+		),
+);
+
+
+.#{$component} {
+	outline: 0;
+	background-color: $light;
+	border: none;
+	border-radius: $btn-border-radius;
+
+	//display: inline-flex;
+	//align-items: center;
+	padding: $btn-padding-y $btn-padding-x;
+
+	color: var(--btn-color);
+	font-size: $font-body;
+	cursor: pointer;
+
+
+
+
+	transition: color .3s ease, background-color .3s ease;
+
+
+	@each $name, $styles in $btn-variants {
+		&-#{$name} {
+			//--btn-color: #{map-get($styles, 'color')};
+			//--btn-bg-color: #{map-get($styles, 'bg-color')};
+			//--btn-bg-color-hover: #{map-get($styles, 'bg-color-hover')};
+			//--btn-bg-box-shadow: {map-get($styles, 'box-shadow')};
+			//--btn-bg-box-shadow-hover: {map-get($styles, 'box-shadow-hover')};
+			color: map-get($styles, 'color');
+			background-color: map-get($styles, 'background-color');
+			border: map-get($styles, 'border');
+			&:hover {
+				background-color: map-get($styles, 'background-color-hover');
+				color: map-get($styles, 'color-hover');
+			}
+		}
+	}
+
+	//@each $name, $styles in $btn-sizes {
+	//	&-#{$name} {
+	//		padding: map-get($styles, "padding");
+	//	}
+	//}
+}
