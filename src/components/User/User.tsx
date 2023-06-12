@@ -6,12 +6,7 @@ interface IUserProps {
 
 const User = ({name}: IUserProps) => {
 	return (
-		<div className="user-profile">
-			<div className="user-avatar">
-				AM
-			</div>
-			<div className="user-name">{name}</div>
-		</div>
+		<div></div>
 	);
 };
 

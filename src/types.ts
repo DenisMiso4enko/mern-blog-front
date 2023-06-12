@@ -4,6 +4,7 @@ export interface IUserInitialState {
 	email: string | null,
 	loading: boolean,
 	error: any,
+	favorites: [string] | null,
 }
 
 
@@ -16,7 +17,9 @@ export interface IPostsInitialState {
 	searchValue: string,
 	totalPosts: number,
 	totalPages: number,
-	searchResults: [IPost] | null
+	searchResults: [IPost] | null,
+	popularPosts: [IPost] | null,
+	favoritesPosts: [IPost] | null,
 }
 
 export interface IPost {

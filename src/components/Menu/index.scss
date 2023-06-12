@@ -1,0 +1,20 @@
+.menu {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+
+	&__item {
+		font-weight: 600;
+		font-size: var(--font-h5);
+		line-height: 22px;
+		color: var(--color-text-default);
+		border-radius: 10px;
+		transition: color .3s ease, background .3s ease;
+		padding: 5px 18px;
+
+		&.active {
+			color: var(--color-white);
+			background: var(--color-text-hover);
+		}
+	}
+}

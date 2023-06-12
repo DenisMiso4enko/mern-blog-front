@@ -16,6 +16,11 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
+  "parserOptions": {
+    "parser": "@typescript-eslint/parser",
+    "project": "./tsconfig.json",
+    "tsconfigRootDir": "scr",
+  },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

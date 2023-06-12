@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from "react-router-dom";
 
 interface IBreadCrumbsProps {
 	current?: string
@@ -8,8 +7,7 @@ interface IBreadCrumbsProps {
 const BreadCrumbs = ({current}: IBreadCrumbsProps) => {
 	return (
 		<div className="crumbs">
-			<Link className="crumbs__link" to="/">Home</Link>
-			<p className="crumbs__link gray">{current}</p>
+			crumbs
 		</div>
 	);
 };

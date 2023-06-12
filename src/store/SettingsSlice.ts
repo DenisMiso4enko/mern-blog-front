@@ -1,14 +1,15 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
 
-import {IPostsInitialState} from "../types";
 import {TABS} from "../constance";
 
+type SettingsInitialState = {
+	activeTab: any,
+	isOpen: boolean
+};
 
-
-
-
-const initialState = {
+const initialState: SettingsInitialState = {
 	activeTab: TABS.all,
+	isOpen: false
 
 };
 
@@ -17,12 +18,15 @@ const settingsSlice = createSlice({
 	initialState,
 	reducers: {
 		setActiveTab(state, action) {
-			state.activeTab = action.payload
-		}
+			state.activeTab = action.payload;
+		},
+		setIsOpen(state, action) {
+			state.isOpen = action.payload;
+		},
 	},
-	extraReducers: (builder) => {
-	},
+	// extraReducers: (builder) => {
+	// },
 });
 
-export const { setActiveTab} = settingsSlice.actions;
+export const {setActiveTab, setIsOpen} = settingsSlice.actions;
 export default settingsSlice.reducer;

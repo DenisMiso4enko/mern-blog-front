@@ -1,0 +1,23 @@
+@import "../../scss/mixins/_mixins.scss";
+.login {
+	height: 70vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	&__title {
+		@include H1;
+		margin-bottom: 30px;
+	}
+
+	form {
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+
+		input {
+			padding: 10px 25px;
+		}
+	}
+}

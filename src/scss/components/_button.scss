@@ -1,0 +1,90 @@
+$component: 'btn';
+
+$btn-padding-y-lg: 1.125rem;
+$btn-padding-x-lg: 2.5rem;
+
+$btn-padding-y-sm: 0.75rem;
+$btn-padding-x-sm: 1.625rem;
+
+
+$btn-types: (
+		'general': (
+				'font-size': var(--font-h4),
+				'padding': $btn-padding-y-sm $btn-padding-x-sm,
+				'radius': 10px
+		),
+		'curve': (
+				'font-size': var(--font-blockoute),
+				'padding': $btn-padding-y-lg $btn-padding-x-lg,
+				'radius': 40px
+		),
+);
+
+$btn-variants: (
+		'default': (
+				'color': var(--color-white),
+				'color-hover': var(--color-white),
+				'bg-color': var(--color-text-hover),
+				'bg-color-hover': var(--color-pink),
+		),
+		'secondary': (
+				'color': var(--color-text-default),
+				'color-hover': var(--color-text-default),
+				'bg-color': var(--color-text-passive),
+				'bg-color-hover':var(--color-text-passive),
+		),
+		'seccess': (
+				'color': var(--color-white),
+				'color-hover': var(--color-white),
+				'bg-color': var(--color-purple),
+				'bg-color-hover': var(--color-purple),
+		),
+		'danger': (
+				'color': var(--color-white),
+				'color-hover': var(--color-white),
+				'bg-color': var(--color-green),
+				'bg-color-hover': var(--color-green),
+		),
+		'warning': (
+				'color': var(--color-white),
+				'color-hover': var(--color-white),
+				'bg-color': var(--color-yellow),
+				'bg-color-hover': var(--color-yellow),
+		),
+);
+
+.#{$component} {
+	outline: 0;
+	border-radius: 10px;
+	border: none;
+	display: inline-block;
+	align-items: center;
+	padding: $btn-padding-x-sm $btn-padding-x-sm;
+	font-size: var(--font-h4);
+	font-weight: 600;
+	line-height: 25px;
+	color: var(--color-text-default);
+	cursor: pointer;
+
+	transition: border 0.2s ease-in-out, color 0.2s ease-in-out,
+	background 0.2s ease-in-out;
+
+	@each $name, $styles in $btn-types {
+		&-#{$name} {
+			font-size: map-get($styles, 'font-size');
+			border-radius: map-get($styles, 'radius');
+			padding: map-get($styles, 'padding');
+		}
+	}
+
+	@each $name, $styles in $btn-variants {
+		&-#{$name} {
+			color: map-get($styles, 'color');
+			background: map-get($styles, 'bg-color');
+			&:hover {
+				color: map-get($styles, 'color-hover');
+				background: map-get($styles, 'bg-color-hover');
+			}
+		}
+	}
+}

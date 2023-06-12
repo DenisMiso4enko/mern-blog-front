@@ -5,26 +5,25 @@ import {setSearchValue} from "../../store/PostsSlice";
 import {useNavigate} from "react-router-dom";
 
 const SearchBar = () => {
-	const {searchValue} = useSelector((state: RootState) => state.posts)
-	const dispatch = useDispatch<AppDispatch>()
-	const navigate = useNavigate()
+	const {searchValue} = useSelector((state: RootState) => state.posts);
+	const dispatch = useDispatch<AppDispatch>();
+	const navigate = useNavigate();
 
 	const handleSearchSubmit = async (event: any) => {
-		event.preventDefault()
-	  try {
+		event.preventDefault();
+		try {
 			if (searchValue.trim()) {
-				dispatch(setSearchValue(''))
-				navigate(`/post/search/${searchValue}`)
+				dispatch(setSearchValue(''));
+				navigate(`/post/search/${searchValue}`);
 			}
 		} catch (err) {
-			console.log(err)
+			console.log(err);
 		}
-	}
+	};
 
 	return (
-		<form className="search-form" onSubmit={handleSearchSubmit}>
-			<input className="search-input" onChange={(event) => dispatch(setSearchValue(event.target.value))}
-						 value={searchValue} placeholder="Search..."/>
+		<form>
+			search
 		</form>
 	);
 };

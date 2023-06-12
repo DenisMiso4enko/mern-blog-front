@@ -1,0 +1,87 @@
+@mixin H1 {
+	font-weight: 600;
+	font-size: var(--font-h1);
+	line-height: 121%;
+	letter-spacing: -0.3px;
+	color: var(--color-text-default);
+}
+
+@mixin H2 {
+	font-weight: 600;
+	font-size: var(--font-h2);
+	line-height: 1611%;
+	letter-spacing: -0.225px;
+	color: var(--color-text-default);
+}
+
+@mixin H3 {
+	font-weight: 600;
+	font-size: var(--font-h3);
+	line-height: 121%;
+	letter-spacing: -0.175px;
+	color: var(--color-text-default);
+}
+
+@mixin H4 {
+	font-weight: 600;
+	font-size: var(--font-h4);
+	line-height: 207%;
+	letter-spacing: -0.1125px;
+	color: var(--color-text-default);
+}
+
+@mixin H5 {
+	font-size: var(--font-h5);
+	line-height: 362%;
+	letter-spacing: -0.1px;
+	color: var(--color-text-default);
+}
+
+@mixin H6 {
+	font-weight: 600;
+	font-size: var(--font-h6);
+	line-height: 414%;
+	letter-spacing: -0.0875px;
+	color: var(--color-text-default);
+}
+
+@mixin Blockquote {
+	font-style: italic;
+	font-weight: 300;
+	font-size: var(--font-blockoute);
+	line-height: 242%;
+	letter-spacing: -0.15px;
+	color: var(--color-text-quote);
+}
+
+@mixin fontBody {
+	font-weight: 400;
+	font-size: var(--font-h5);
+	line-height: 362%;
+	letter-spacing: -0.1px;
+	color: var(--color-text-default);
+}
+
+@mixin Title1 {
+	font-weight: 700;
+	font-size: var(--font-h2);
+	line-height: 161%;
+	letter-spacing: -0.225px;
+	color: var(--color-text-default);
+}
+
+@mixin Title2 {
+	font-weight: 700;
+	font-size: var(--font-blockoute);
+	line-height: 242%;
+	letter-spacing: -0.015px;
+	color: var(--color-text-default);
+}
+
+@mixin Title3 {
+	font-weight: 700;
+	font-size: var(--font-h4);
+	line-height: 322%;
+	letter-spacing: -0.1125px;
+	color: var(--color-text-default);
+}

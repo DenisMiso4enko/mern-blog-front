@@ -1,33 +1,38 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {IoMenu} from "react-icons/all";
-import {FiSearch} from "react-icons/all";
-import {AiOutlineUser} from "react-icons/all";
-import {useDispatch, useSelector} from "react-redux";
-import {AppDispatch, RootState} from "../../store";
-import {useNavigate} from "react-router-dom";
-import User from "../User/User";
-import SearchBar from "../SearchBar/SearchBar";
+import React, { FC, useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
+import { useNavigate } from "react-router-dom";
+import Logo from "../Logo/Logo";
+import Menu from "../Menu/Menu";
+import { GoSearch } from "react-icons/go";
+import "./index.scss";
 
-const Header = ({toggleMenu}: any) => {
-	const {name} = useSelector((state: RootState) => state.user)
-	const [openSearch, setOpenSearch] = useState(false)
-	const navigate = useNavigate()
-	return (
-		<>
-			<div className="header header-container">
-				<div className="header__btn">
-					<button onClick={toggleMenu}><IoMenu/></button>
-				</div>
-				{openSearch && <SearchBar/>}
-				<div className="header__actions">
-					<div className="header__search">
-						<button onClick={() => setOpenSearch(!openSearch)}><FiSearch/></button>
-					</div>
-					{name ? <User name={name}/> : <button onClick={() => navigate('/login')}><AiOutlineUser/></button>}
-				</div>
-			</div>
-		</>
-	);
+interface HeaderProps {
+  menu: boolean;
+  toggleMenu: () => void;
+  closeMenu: () => void;
+}
+
+const Header: FC<HeaderProps> = ({ toggleMenu, menu, closeMenu }) => {
+  const { name } = useSelector((state: RootState) => state.user);
+  const [openSearch, setOpenSearch] = useState(false);
+  const navigate = useNavigate();
+  return (
+    <header className="header">
+      <div className="header__left">
+        <Logo />
+        <Menu />
+      </div>
+      <div className="header__right">
+        <button
+          onClick={() => navigate("/login")}
+          className="btn btn-danger btn-general"
+        >
+          Login
+        </button>
+      </div>
+    </header>
+  );
 };
 
 export default Header;
